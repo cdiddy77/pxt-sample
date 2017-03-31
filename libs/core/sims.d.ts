@@ -20,6 +20,27 @@ declare namespace turtle {
     function turn(direction: Direction, angle: number): void;
 
 }
+declare namespace react {
+    /**
+     * Do something when a button (``A``, ``B`` or both ``A+B``) is pressed
+     * @param button the button that needs to be pressed
+     * @param body code to run when event is raised
+     */
+    //% help=input/on-button-pressed weight=85 blockGap=8
+    //% blockId=device_button_event block="on button|%NAME|pressed" icon="\uf192"
+    //% shim=react::onButtonPressed
+    function onButtonPressed(button: number, body: () => void): void;
+
+    /**
+     * create a properties object
+     * @param body code to run to create new object
+     */
+    //% help=react/createProperties weight=85 blockGap=8
+    //% blockId=create_properties block="create properties" icon="\uf192"
+    //% shim=react::createProperties
+    function createProperties(body: () => void): void;
+
+}
 declare namespace control {
     /**
      * Repeats the code forever in the background. On each iteration, allows other code to run.

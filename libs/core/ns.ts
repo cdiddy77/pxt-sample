@@ -13,3 +13,11 @@ namespace turtle {
 namespace control {
 
 }
+
+/**
+ * React stuffs
+ */
+//% color=#FF5722 weight=110
+namespace react {
+
+}

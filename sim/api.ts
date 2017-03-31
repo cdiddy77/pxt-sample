@@ -25,7 +25,35 @@ namespace pxsim.turtle {
             b.sprite.angle -= angle;
         else
             b.sprite.angle += angle;
-        return Promise.delay(400)
+        return Promise.delay(100)
+    }
+}
+
+namespace pxsim.react {
+    export class Property {
+        name: string;
+        value: any;
+    }
+
+    /**
+     * Do something when a button (``A``, ``B`` or both ``A+B``) is pressed
+     * @param button the button that needs to be pressed
+     * @param body code to run when event is raised
+     */
+    //% help=input/on-button-pressed weight=85 blockGap=8
+    //% blockId=device_button_event block="on button|%NAME|pressed" icon="\uf192"
+    export function onButtonPressed(button: number, body: () => void): void {
+        pxsim.console.log('onButtonPressed');
+    }
+    /**
+     * create a properties object
+     * @param body code to run to create new object
+     */
+    //% help=react/createProperties weight=85 blockGap=8
+    //% blockId=create_properties block="create properties" icon="\uf192"
+    export function createProperties(body: () => void): void {
+        pxsim.console.log('create properties');
+        // return [{name:'p',value:'v'}];
     }
 }
 
@@ -52,14 +80,14 @@ namespace pxsim.control {
     }
 }
 
-function logMsg(m:string) { console.log(m) }
+function logMsg(m: string) { console.log(m) }
 
 namespace pxsim.console {
     /**
      * Print out message
      */
     //% 
-    export function log(msg:string) {
+    export function log(msg: string) {
         logMsg("CONSOLE: " + msg)
         // why doesn't that work?
         board().writeSerial(msg + "\n")
@@ -77,21 +105,21 @@ namespace pxsim {
          */
         //%
         public x = 100;
-         /**
-         * The Y-coordiante
-         */
+        /**
+        * The Y-coordiante
+        */
         //%
         public y = 100;
         public angle = 90;
-        
+
         /** 
          * Make new sprite
          */
         //%
         constructor() {
         }
-        
-        private foobar() {}
+
+        private foobar() { }
 
         /**
          * Move the thing forward
@@ -102,7 +130,7 @@ namespace pxsim {
             this.x += Math.cos(deg) * steps * 10;
             this.y += Math.sin(deg) * steps * 10;
             board().updateView();
-            return Promise.delay(400)
+            return Promise.delay(100)
         }
     }
 }
