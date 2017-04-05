@@ -12,6 +12,16 @@ namespace pxsim.turtle {
     }
 
     /**
+     * Moves the sprite backward
+     * @param steps number of steps to move, eg: 1
+     */
+    //% weight=90
+    //% blockId=sampleBackward block="backward %steps"
+    export function backward(steps: number) {
+        // return board().sprite.forwardAsync(steps)
+    }
+
+    /**
      * Moves the sprite forward
      * @param direction the direction to turn, eg: Direction.Left
      * @param angle degrees to turn, eg:90
@@ -27,14 +37,10 @@ namespace pxsim.turtle {
             b.sprite.angle += angle;
         return Promise.delay(100)
     }
+
 }
 
 namespace pxsim.react {
-    export class Property {
-        name: string;
-        value: any;
-    }
-
     /**
      * Do something when a button (``A``, ``B`` or both ``A+B``) is pressed
      * @param button the button that needs to be pressed
@@ -45,15 +51,42 @@ namespace pxsim.react {
     export function onButtonPressed(button: number, body: () => void): void {
         pxsim.console.log('onButtonPressed');
     }
+
+    /**
+     * Show a div
+     * @param properties of the div
+     * @param children of the div
+     */
+    //% help=react/div weight=85 blockGap=8
+    //% blockId=div block="div|props %properties=PropertySet|children %children=ComponentSet"
+    export function div(properties: PropertySet, children:ComponentSet) {
+        pxsim.console.log('div');
+    }
+    /**
+     * Show a span
+     * @param properties of the span
+     * @param body of the span
+     */
+    //% help=react/span weight=85 blockGap=8
+    //% blockId=span block="span|props %properties=PropertySet"
+    export function span(properties: PropertySet) {
+        pxsim.console.log('span');
+    }
     /**
      * create a properties object
      * @param body code to run to create new object
      */
     //% help=react/createProperties weight=85 blockGap=8
-    //% blockId=create_properties block="create properties" icon="\uf192"
-    export function createProperties(body: () => void): void {
+    //% blockId=create_properties block="properties" icon="\uf192"
+    export function createProperties(body: () => void): PropertySet {
         pxsim.console.log('create properties');
-        // return [{name:'p',value:'v'}];
+        return { p: [{ name: 'p', value: 'v' }] };
+
+    }   //% help=react/createElements weight=85 blockGap=8
+    //% blockId=create_elements block="elements" icon="\uf192"
+    export function createElements(body: () => void): ComponentSet {
+        pxsim.console.log('create properties');
+        return { e:[] };
     }
 }
 

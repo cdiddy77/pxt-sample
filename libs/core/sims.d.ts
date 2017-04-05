@@ -10,6 +10,15 @@ declare namespace turtle {
     function forward(steps: number): void;
 
     /**
+     * Moves the sprite backward
+     * @param steps number of steps to move, eg: 1
+     */
+    //% weight=90
+    //% blockId=sampleBackward block="backward %steps"
+    //% shim=turtle::backward
+    function backward(steps: number): void;
+
+    /**
      * Moves the sprite forward
      * @param direction the direction to turn, eg: Direction.Left
      * @param angle degrees to turn, eg:90
@@ -32,13 +41,37 @@ declare namespace react {
     function onButtonPressed(button: number, body: () => void): void;
 
     /**
+     * Show a div
+     * @param properties of the div
+     * @param children of the div
+     */
+    //% help=react/div weight=85 blockGap=8
+    //% blockId=div block="div|props %properties=PropertySet|children %children=ComponentSet"
+    //% shim=react::div
+    function div(properties: PropertySet, children: ComponentSet): void;
+
+    /**
+     * Show a span
+     * @param properties of the span
+     * @param body of the span
+     */
+    //% help=react/span weight=85 blockGap=8
+    //% blockId=span block="span|props %properties=PropertySet"
+    //% shim=react::span
+    function span(properties: PropertySet): void;
+
+    /**
      * create a properties object
      * @param body code to run to create new object
      */
     //% help=react/createProperties weight=85 blockGap=8
-    //% blockId=create_properties block="create properties" icon="\uf192"
+    //% blockId=create_properties block="properties" icon="\uf192"
     //% shim=react::createProperties
-    function createProperties(body: () => void): void;
+    function createProperties(body: () => void): PropertySet;
+
+    //% blockId=create_elements block="elements" icon="\uf192"
+    //% shim=react::createElements
+    function createElements(body: () => void): ComponentSet;
 
 }
 declare namespace control {
